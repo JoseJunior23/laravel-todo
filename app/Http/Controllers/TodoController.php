@@ -34,7 +34,7 @@ class TodoController extends Controller
     {
         $user = auth()->user();
 
-        $todos = $this->repository->findWhere(['user_id' => $user->id]);
+        $todos = $this->repository->findWhere(['user_id' => $user->id, 'is_complete = 0']);
 
         return view('dashboard', compact('user', 'todos'));
     }
@@ -76,7 +76,7 @@ class TodoController extends Controller
         $user = auth()->user();
 
         $response = $this->service->complete($todo->id, $user->id);
-        
+
         return redirect('/dashboard')->with(
             $response['success'] ? 'success' : 'error',
             $response['message']
