@@ -85,6 +85,28 @@ class TodoService
         ];
     }
 
+    public function update(array $attributtes, int $todo_id): array
+    {
+        DB::beginTransaction();
+        try {
+            $todo = $this->repository->update($attributtes, $todo_id);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            logger()->error($th);
+            return [
+                'success' => false,
+                'message' => 'Erro ao atualizar TODO'
+            ];
+        }
+
+        DB::commit();
+        return [
+            'success' => true,
+            'message' => 'TODO atualizado com sucesso',
+            'data' => $todo
+        ];
+    }
+
     /**
      * Remove the specified resource from storage.
      *
