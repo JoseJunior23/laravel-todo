@@ -16,13 +16,14 @@ class TodoTest extends TestCase
 
     /**
      * Fornecer dados prontos para os testes
-     * 
+     *
      * @param int $numUsers
      * @param int $numTodos
-     * 
+     *
      * @return array
      */
-    public function dataProvider(int $numUsers = 1, int $numTodos = 1) {
+    public function dataProvider(int $numUsers = 1, int $numTodos = 1)
+    {
         $faker = app(Generator::class);
 
         $users = [];
@@ -67,7 +68,7 @@ class TodoTest extends TestCase
     {
         // Criar dados falsos
         $data = $this->dataProvider(2);
-        
+
         // Pegar dados do primeiro usuário
         $user = $data['users'][0];
         $todo = $data['todos'][$user->id][0];
@@ -96,7 +97,7 @@ class TodoTest extends TestCase
     {
         // Criar dados falsos
         $data = $this->dataProvider(1, 3);
-        
+
         // Pegar dados do primeiro usuário
         $user = $data['users'][0];
         $this->actingAs($user);
@@ -117,7 +118,7 @@ class TodoTest extends TestCase
     {
         // Criar dados falsos
         $data = $this->dataProvider(1, 3);
-        
+
         // Pegar dados do primeiro usuário
         $user = $data['users'][0];
         $this->actingAs($user);
@@ -255,7 +256,7 @@ class TodoTest extends TestCase
     {
         // Criar dados falsos
         $data = $this->dataProvider(2);
-        
+
         // Pegar dados do usuário
         $user = $data['users'][0];
         $todo = $data['todos'][$user->id][0];
@@ -280,7 +281,7 @@ class TodoTest extends TestCase
     {
         // Criar dados falsos
         $data = $this->dataProvider(2);
-        
+
         // Pegar dados do primeiro usuário
         $user = $data['users'][0];
         $this->actingAs($user);
@@ -341,7 +342,7 @@ class TodoTest extends TestCase
         // Pegar dados do primeiro usuário
         $user = $data['users'][0];
         $todo = $data['todos'][$user->id][0];
-        
+
         // Pegar dados do segundo usuário
         $user2 = $data['users'][1];
         $this->actingAs($user2);
