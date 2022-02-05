@@ -108,7 +108,7 @@ class TodoController extends Controller
 
         $todo = $this->repository->find($todo->id);
 
-        if ($todo->user_id == $user->id) {
+        if ($todo->user_id === $user->id) {
             return view('edit', compact('user', 'todo'));
         } else {
             abort(404);
